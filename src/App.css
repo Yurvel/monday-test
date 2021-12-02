@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, p {
+  margin: 0;
+}
+
+.form {
+
+}
+
+.form {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+
+
+  width: 50%;
+  min-width: 500px;
+  padding: 50px;
+  margin: 50px auto;
+  display: grid;
+  gap: 20px;
+  grid-template-areas: "board       group       "
+                       "name        name        "
+                       "description description "
+                       "image       btn         "
+}
+
+.board {
+  grid-area: board;
+}
+.group {
+  grid-area: group;
+}
+.name{
+  grid-area: name;
+}
+.description {
+  grid-area: description;
+}
+.description .input {
+  height: 60px;
+}
+.image {
+  grid-area: image;
+}
+
+.create-btn {
+  grid-area: btn;
+  place-self: end;
+  width: 100%;
+  height: 30px;
+  border: 0;
+  cursor: pointer;
+}
+.create-btn:hover:enabled {
+  background-color: lightgray;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.input {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  border: 1px solid lightgray;
+}
+.label {
+  display: block;
+}
+
+.input::file-selector-button {
+  height: 100%;
+  margin-right: 10px;
+  border: 0;
+}
+
+.snackbar {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px 50px;
+
+  border-radius: 7px;
+  border: 1px solid lightgray;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.success {
+  color: forestgreen;
+  border-color: forestgreen;
+  background-color: rgba(143, 188, 143, .2);
+}
+.error {
+  color: indianred;
+  border-color: indianred;
+  background-color: rgba(255, 182, 193, .2);
+}
+
