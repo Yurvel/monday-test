@@ -76,7 +76,6 @@ const CreatItemForm = () => {
         // })
       }
       
-  
       console.log('Item created!');
     } catch (err) {
       setError(true)

@@ -10,8 +10,9 @@ body, p {
   margin: 0;
 }
 
-.form {
-
+textarea { 
+  min-width: 100%;
+  resize:vertical;
 }
 
 .form {
