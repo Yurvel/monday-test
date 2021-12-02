@@ -6,7 +6,7 @@ import { GET_BOARDS, CREATE_ITEM, CREATE_UPDATE, ADD_FILE } from '../apollo/quer
 
 import Snackbar from './Snackbar';
 
-const CreatingItem = () => {
+const CreatItemForm = () => {
   const [showSnackbar, setShowSnackbar] = useState(false)
   const [board, setBoard] = useState("");
   const [group, setGroup] = useState("");
@@ -142,4 +142,4 @@ const CreatingItem = () => {
   );
 };
 
-export default CreatingItem;
+export default CreatItemForm;
