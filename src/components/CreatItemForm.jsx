@@ -46,31 +46,36 @@ const CreatItemForm = () => {
           body: description,
         }
       })
+
+      if (fileInput.current.files.length) {
+        const formData = new FormData();
+  
+        formData.append('query', 'mutation ($update_id: Int!, $file: File!) {add_file_to_update (update_id: $update_id, file: $file) {id}}');
+        formData.append('variables', JSON.stringify({'update_id': Number(newUpdate.data.create_update.id) }));
+        formData.append('map', JSON.stringify({'image': 'variables.file'}));
+        formData.append('image', fileInput.current.files[0]);
+  
+        await fetch('https://api.monday.com/v2/file', {
+          mode: 'cors',
+          method: 'POST',
+          headers: {
+            'Authorization': token,
+            'Content-Type': 'multipart/form-data',
+          },
+          body: formData 
+        });
+
+        // or
+
+        // await fileClient.mutate({
+        //   mutation: ADD_FILE,
+        //   variables: {
+        //     update_id: Number(newUpdate.data.create_update.id),
+        //       file: fileInput.current.files[0]
+        //   }
+        // })
+      }
       
-      const formData = new FormData();
-
-      formData.append('query', 'mutation ($update_id: Int!, $file: File!) {add_file_to_update (update_id: $update_id, file: $file) {id}}');
-      formData.append('variables', JSON.stringify({'update_id': Number(newUpdate.data.create_update.id) }));
-      formData.append('map', JSON.stringify({'image': 'variables.file'}));
-      formData.append('image', fileInput.current.files[0]);
-
-      await fetch('https://api.monday.com/v2/file', {
-        mode: 'cors',
-        method: 'POST',
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'multipart/form-data',
-        },
-        body: formData 
-      });
-
-      // await fileClient.mutate({
-      //   mutation: ADD_FILE,
-      //   variables: {
-      //     update_id: Number(newUpdate.data.create_update.id),
-      //       file: fileInput.current.files[0]
-      //   }
-      // })
   
       console.log('Item created!');
     } catch (err) {
